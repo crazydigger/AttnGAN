@@ -459,6 +459,7 @@ class condGANTrainer(object):
             for key in data_dic:
                 save_dir = '%s/%s' % (s_tmp, key)
                 mkdir_p(save_dir)
+                print('ATTENTION save_dir:', save_dir)
                 captions, cap_lens, sorted_indices = data_dic[key]
 
                 batch_size = captions.shape[0]
@@ -497,6 +498,8 @@ class condGANTrainer(object):
                             # print('im', im.shape)
                             im = Image.fromarray(im)
                             fullpath = '%s_g%d.png' % (save_name, k)
+                            print('ATTENTION fullpath:', fullpath)
+
                             im.save(fullpath)
 
                         for k in range(len(attention_maps)):
@@ -514,4 +517,5 @@ class condGANTrainer(object):
                             if img_set is not None:
                                 im = Image.fromarray(img_set)
                                 fullpath = '%s_a%d.png' % (save_name, k)
+                                print('ATTENTION fullpath:', fullpath)
                                 im.save(fullpath)
